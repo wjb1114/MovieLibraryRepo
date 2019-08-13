@@ -30,12 +30,28 @@ namespace MovieLibrary.Controllers
         }
 
         // POST api/movie
-        public void Post([FromBody]Movie value)
+        public IHttpActionResult Post([FromBody]Movie value)
         {
-            context.Movies.Add(value);
-            context.SaveChangesAsync();
-            // Create movie in db logic
+            try
+            {
+                if (value.Title != null && value.Genre != null && value.Director != null)
+                {
+                    context.Movies.Add(value);
+                    context.SaveChangesAsync();
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
+            // Create movie in db logic
+
 
         // PUT api/movie/5
         public void Put(int id, [FromBody]string value)
