@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using MovieLibrary.Models;
 
-namespace WebAPISample.Controllers
+namespace MovieLibrary.Controllers
 {
     public class MovieController : ApiController
     {
