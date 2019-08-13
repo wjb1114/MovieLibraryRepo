@@ -41,6 +41,12 @@ namespace WebAPISample.Controllers
         {
             // Delete movie from db logic
         }
+
+        public void Read(int id)
+        {
+
+
+        }
     }
 
 }
