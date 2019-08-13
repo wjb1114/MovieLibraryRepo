@@ -1,12 +1,13 @@
 (function($){
     function processForm( e ){
         var dict = {
-        	Title : this["title"].value,
-        	Director: this["director"].value
+        	Title : this["Title"].value,
+        	Director: this["Director"].value,
+			Genre: this["Genre"].value
         };
 
         $.ajax({
-            url: 'https://localhost:44352/api/movie',
+            url: 'https://localhost:44392/api/movie',
             dataType: 'json',
             type: 'post',
             contentType: 'application/json',
@@ -22,5 +23,5 @@
         e.preventDefault();
     }
 
-    $('#my-form').submit( processForm );
+    $('#new-movie').submit( processForm );
 })(jQuery);
