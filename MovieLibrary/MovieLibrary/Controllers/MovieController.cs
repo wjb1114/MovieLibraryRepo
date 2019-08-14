@@ -50,8 +50,6 @@ namespace MovieLibrary.Controllers
                 return BadRequest();
             }
         }
-            // Create movie in db logic
-
 
         // PUT api/movie/5
         public void Put(int id, [FromBody]string value)
@@ -60,9 +58,19 @@ namespace MovieLibrary.Controllers
         }
 
         // DELETE api/movie/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
-            // Delete movie from db logic
+            try
+            {
+                Movie movie = context.Movies.Where(m => m.MovieId == id).Single();
+                context.Movies.Remove(movie);
+                context.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         public void Read(int id)

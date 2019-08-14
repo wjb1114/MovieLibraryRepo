@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>jQuery AJAX POST Form</title>
-    <meta charset="utf-8">
+	<title>jQuery AJAX POST Form</title>
+	<meta charset="utf-8">
 </head>
+
 <body>
 
-<div id="response">
-    <pre></pre>
-</div>
+	<div id="response">
+		<pre></pre>
+	</div>
 
-<form id="new-movie" action="processForm">
-    <input type="text" name="Title" placeholder="Title" /><br />
-    <input type="text" name="Director" placeholder="Director" /><br />
-	<input type="text" name="Genre" placeholder="Genre" />
+	<form id="new-movie" action="processForm">
+		<input type="text" name="Title" placeholder="Title" /><br />
+		<input type="text" name="Director" placeholder="Director" /><br />
+		<input type="text" name="Genre" placeholder="Genre" />
 
-    <button type="submit">Submit</button>
-</form>
+		<button type="submit">Submit</button>
+	</form>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="./app.js"></script>
+	<table id="view-table-head">
+		<tr>
+			<th>Title</th>
+			<th>Genre</th>
+			<th>Director</th>
+			<th>Details</th>
+		</tr>
+	</table>
+
+	<table id="view-table-body">
+	</table>
+
+	<button type="submit" id="get-all-movies">Get Movie List</button>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="./app.js"></script>
 </body>
+
 </html>
