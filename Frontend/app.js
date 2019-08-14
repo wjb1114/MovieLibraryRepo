@@ -49,8 +49,6 @@ function getMovies() {
   });
 }
 
-
-
 function getMovie(MovieId) {
   $.ajax({
     url: 'https://localhost:44392/api/movie?MovieId=' + MovieId,
@@ -62,7 +60,7 @@ function getMovie(MovieId) {
       $('#view-table-body').html(htmlValue);
 
       htmlValue += '<tr><td>' + result.Title + '</td><td>' + result.Director + '</td><td>' + result.Genre + '</td>';
-    
+
       $('#view-table-body').html(htmlValue);
     },
 
