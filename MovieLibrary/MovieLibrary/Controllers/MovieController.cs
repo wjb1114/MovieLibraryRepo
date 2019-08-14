@@ -44,6 +44,7 @@ namespace MovieLibrary.Controllers
         }
 
         // POST api/movie
+        [HttpPost]
         public IHttpActionResult Post([FromBody]Movie value)
         {
             try
@@ -52,7 +53,7 @@ namespace MovieLibrary.Controllers
                 {
                     context.Movies.Add(value);
                     context.SaveChangesAsync();
-                    return Ok();
+                    return Ok(value);
                 }
                 else
                 {
