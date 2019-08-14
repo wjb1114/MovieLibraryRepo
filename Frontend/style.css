@@ -3,7 +3,7 @@ table, form {
 	width: 50% !important;
 }
 
-button {
+button, input {
 	margin: auto;
 	width: 100% !important;
 }
