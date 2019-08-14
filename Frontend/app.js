@@ -33,7 +33,7 @@ function getMovies() {
       $('#view-table-body').html(htmlValue);
       $.each(result, function(key, value) {
         htmlValue += '<tr><td>' + value.Title + '</td><td>' + value.Director + '</td><td>' + value.Genre + '</td>';
-        htmlValue += '<td><button type="submit" id="get-this-movie" onclick="getMovie('+ key +')">Get Movie List</button></td></tr>\n';
+        htmlValue += '<td><button type="submit" id="get-this-movie" onclick="getMovie('+ value.MovieId +')">Get Movie List</button></td></tr>\n';
       })
 
       $('#view-table-body').html(htmlValue);
@@ -42,22 +42,20 @@ function getMovies() {
       console.log(errorThrown);
     }
   });
-
-  e.preventDefault();
 }
 
-function getMovie(Id) {
+function getMovie(MovieId) {
   $.ajax({
-    url: 'https://localhost:44392/api/movie' + Id,
+    url: 'https://localhost:44392/api/movie?MovieId=' + MovieId,
     dataType: 'json',
     type: 'get',
     contentType : 'application/json',
     success: function(result) {
       var htmlValue = "";
       $('#view-table-body').html(htmlValue);
-      Console.Log(result.Title);
-      Console.Log(result.Genre);
-      Console.Log(result.Director);
+      console.log(result.Title);
+      console.log(result.Genre);
+      console.log(result.Director);
       }
     }
   )}
