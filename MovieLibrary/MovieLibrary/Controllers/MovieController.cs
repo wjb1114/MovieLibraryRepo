@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -16,17 +17,30 @@ namespace MovieLibrary.Controllers
             context = new ApplicationDbContext();
         }
         // GET api/movie
-        public IEnumerable<string> Get()
+        public IHttpActionResult Get()
         {
-            // Retrieve all movies from db logic
-            return new string[] { "movie1 string", "movie2 string" };
+          
+
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+
+                var movies = context.Movies.ToList();
+
+                return Ok(movies);
+            }
         }
 
         // GET api/movie/5
-        public string Get(int id)
+        public IHttpActionResult Get(int MovieId)
         {
-            // Retrieve movie by id from db logic
-            return "value";
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+                var movies = context.Movies.Where(m => m.MovieId == MovieId).FirstOrDefault();
+
+                return Ok(movies);
+            }
+
+            
         }
 
         // POST api/movie
@@ -54,8 +68,18 @@ namespace MovieLibrary.Controllers
 
 
         // PUT api/movie/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Movie movie)
         {
+
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+                var movies = context.Movies.FirstOrDefault(m => m.MovieId == id);
+
+                movies.Title = movie.Title;
+                movies.Genre = movie.Genre;
+                movies.Director = movie.Director;
+                context.SaveChanges();
+            }
             // Update movie in db logic
         }
 
