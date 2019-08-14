@@ -22,7 +22,7 @@ function processForm(e) {
   e.preventDefault();
 }
 
-function getMovies(e) {
+function getMovies() {
   $.ajax({
     url: 'https://localhost:44392/api/movie',
     dataType: 'json',
@@ -33,7 +33,7 @@ function getMovies(e) {
       $('#view-table-body').html(htmlValue);
       $.each(result, function(key, value) {
         htmlValue += '<tr><td>' + value.Title + '</td><td>' + value.Director + '</td><td>' + value.Genre + '</td>';
-        htmlValue += '<td><button type="submit" id="get-this-movie">Get Movie List</button></td></tr>\n';
+        htmlValue += '<td><button type="submit" id="get-this-movie" onclick="getMovie('+ key +')">Get Movie List</button></td></tr>\n';
       })
 
       $('#view-table-body').html(htmlValue);
@@ -45,3 +45,19 @@ function getMovies(e) {
 
   e.preventDefault();
 }
+
+function getMovie(Id) {
+  $.ajax({
+    url: 'https://localhost:44392/api/movie' + Id,
+    dataType: 'json',
+    type: 'get',
+    contentType : 'application/json',
+    success: function(result) {
+      var htmlValue = "";
+      $('#view-table-body').html(htmlValue);
+      Console.Log(result.Title);
+      Console.Log(result.Genre);
+      Console.Log(result.Director);
+      }
+    }
+  )}
