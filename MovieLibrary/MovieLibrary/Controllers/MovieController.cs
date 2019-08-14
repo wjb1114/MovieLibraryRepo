@@ -54,7 +54,7 @@ namespace MovieLibrary.Controllers
                 {
                     context.Movies.Add(value);
                     context.SaveChangesAsync();
-                    return Ok();
+                    return Ok(value);
                 }
                 else
                 {
