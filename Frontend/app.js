@@ -1,26 +1,31 @@
-function processForm(e) {
-  var dict = {
-    Title: this["Title"].value,
-    Director: this["Director"].value,
-    Genre: this["Genre"].value
-  };
+(function($){
+    function processForm( e ){
+        var dict = {
+        	Title : this["Title"].value,
+        	Director: this["Director"].value,
+					Genre: this["Genre"].value
+        };
 
-  $.ajax({
-    url: 'https://localhost:44392/api/movie',
-    dataType: 'json',
-    type: 'post',
-    contentType: 'application/json',
-    data: JSON.stringify(dict),
-    success: function(data, textStatus, jQxhr) {
-      $('#response pre').html(data);
-    },
-    error: function(jqXhr, textStatus, errorThrown) {
-      console.log(errorThrown);
+        $.ajax({
+            url: 'https://localhost:44392/api/movie',
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify(dict),
+            success: function( data, textStatus, jQxhr ){
+                $('#response pre').html( data );
+								getMovies();
+            },
+            error: function( jqXhr, textStatus, errorThrown, data ){
+                console.log( errorThrown );
+            }
+        });
+
+        e.preventDefault();
     }
-  });
 
-  e.preventDefault();
-}
+    $('#new-movie').submit( processForm );
+})(jQuery);
 
 function getMovies() {
   $.ajax({
@@ -44,6 +49,8 @@ function getMovies() {
   });
 }
 
+
+
 function getMovie(MovieId) {
   $.ajax({
     url: 'https://localhost:44392/api/movie?MovieId=' + MovieId,
@@ -53,9 +60,26 @@ function getMovie(MovieId) {
     success: function(result) {
       var htmlValue = "";
       $('#view-table-body').html(htmlValue);
-      console.log(result.Title);
-      console.log(result.Genre);
-      console.log(result.Director);
-      }
+
+      htmlValue += '<tr><td>' + result.Title + '</td><td>' + result.Director + '</td><td>' + result.Genre + '</td>';
+    
+      $('#view-table-body').html(htmlValue);
+    },
+
+    error: function(jqXhr, textStatus, errorThrown) {
+      console.log(errorThrown);
     }
-  )}
+  });
+
+function updateMovie(MovieId) {
+  $.ajax({
+    url: 'http://localhost:44392/api/movie?MovieId=' + MovieId,
+    dataType: 'json',
+    type: 'put',
+    contentType: 'application/json',
+    success: function(data, textStatus, jQxhr) {
+        $('#response pre').html(data);
+    }
+  })
+}
+}
