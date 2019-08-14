@@ -1,0 +1,14 @@
+table, form {
+	margin: auto;
+	width: 50% !important;
+}
+
+button {
+	margin: auto;
+	width: 100% !important;
+}
+
+button#get-all-movies {
+	margin: auto;
+	width: 50% !important;
+}
