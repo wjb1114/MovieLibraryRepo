@@ -66,6 +66,7 @@ namespace MovieLibrary.Controllers
         }
 
         // PUT api/movie/5
+        [Route]
         public void Put(int id, [FromBody]Movie movie)
         {
 

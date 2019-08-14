@@ -14,7 +14,7 @@ namespace MovieLibrary.Migrations
 
         protected override void Seed(MovieLibrary.Models.ApplicationDbContext context)
         {
-            /*
+            
             context.Movies.AddOrUpdate(
                 new Models.Movie { Title = "The Departed", Genre = "Drama", Director = "Martin Scorsese" },
                 new Models.Movie { Title = "The Dark Knight", Genre = "Drama", Director = "Christopher Nolan" },
@@ -22,7 +22,7 @@ namespace MovieLibrary.Migrations
                 new Models.Movie { Title = "Pineapple Express", Genre = "Comedy", Director = "David Gordon Green" },
                 new Models.Movie { Title = "Die Hard", Genre = "Action", Director = "John McTiernan" }
             );
-            */
+            
         }
     }
 }
