@@ -9,6 +9,7 @@ using MovieLibrary.Models;
 
 namespace MovieLibrary.Controllers
 {
+
     public class MovieController : ApiController
     {
         ApplicationDbContext context;
@@ -44,6 +45,7 @@ namespace MovieLibrary.Controllers
         }
 
         // POST api/movie
+        [HttpPost]
         public IHttpActionResult Post([FromBody]Movie value)
         {
             try
@@ -98,12 +100,5 @@ namespace MovieLibrary.Controllers
                 return BadRequest();
             }
         }
-
-        public void Read(int id)
-        {
-
-
-        }
     }
-
 }
