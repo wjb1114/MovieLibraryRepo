@@ -38,7 +38,7 @@ function getMovies() {
       $('#view-table-body').html(htmlValue);
       $.each(result, function(key, value) {
         htmlValue += '<tr><td>' + value.Title + '</td><td>' + value.Director + '</td><td>' + value.Genre + '</td>';
-        htmlValue += '<td><button type="submit" id="get-this-movie" onclick="getMovie('+ value.MovieId +')">Get Movie List</button></td></tr>\n';
+        htmlValue += '<td><button type="submit" id="get-this-movie" onclick="getMovie('+ value.MovieId +')">Update</button></td></tr>\n';
       })
 
       $('#view-table-body').html(htmlValue);
@@ -69,15 +69,31 @@ function getMovie(MovieId) {
     }
   });
 
-function updateMovie(MovieId) {
+(function($) {
+  function updateMovie( e ){
+    var dict = {
+      Title: this["Title"].value,
+      Director: this ["Director"].value,
+      Genre: this ["Genre"].value,
+      MovieId: this["MovieId"].value
+    };
+
   $.ajax({
-    url: 'http://localhost:44392/api/movie?MovieId=' + MovieId,
+    url: 'http://localhost:44392/api/movie?MovieId=' + dict.MovieId,
     dataType: 'json',
     type: 'put',
     contentType: 'application/json',
+    data: JSON.stringify(dict),
     success: function(data, textStatus, jQxhr) {
         $('#response pre').html(data);
+        getMovies();
+    },
+    error: function(jqXhr, textStatus, errorThrown ){
+      console.log(errorThrown);
     }
-  })
-}
+  });
+    e.preventDefault();
+  }
+  $('#updateMovie').submit(updateMovie);
+})(jQuery);
 }
