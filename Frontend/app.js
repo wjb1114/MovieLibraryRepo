@@ -69,15 +69,31 @@ function getMovie(MovieId) {
     }
   });
 
-function updateMovie(MovieId) {
+(function($) {
+  function updateMovie( e ){
+    var dict = {
+      Title: this["Title"].value,
+      Director: this ["Director"].value,
+      Genre: this ["Genre"].value,
+      MovieId: this["MovieId"].value
+    };
+
   $.ajax({
-    url: 'http://localhost:44392/api/movie?MovieId=' + MovieId,
+    url: 'http://localhost:44392/api/movie?MovieId=' + dict.MovieId,
     dataType: 'json',
     type: 'put',
     contentType: 'application/json',
+    data: JSON.stringify(dict),
     success: function(data, textStatus, jQxhr) {
         $('#response pre').html(data);
+        getMovies();
+    },
+    error: function(jqXhr, textStatus, errorThrown ){
+      console.log(errorThrown);
     }
-  })
-}
+  });
+    e.preventDefault();
+  }
+  $('#updateMovie').submit(updateMovie);
+})(jQuery);
 }
