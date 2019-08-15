@@ -1,8 +1,10 @@
     function addMovie( e ){
+      var id = document.getElementById("addMovie-id");
+    	console.log(id);
         var dict = {
-        	Title : this["Title"].value,
-        	Director: this["Director"].value,
-					Genre: this["Genre"].value
+        	Title : document.getElementById("addMovie-title").value,
+        	Director: document.getElementById("addMovie-director").value,
+    			Genre: document.getElementById("addMovie-genre").value,
         };
 
         $.ajax({
@@ -50,25 +52,19 @@ function getMovies() {
 
 function addMovieForm() {
 
-  $.ajax({
-    url: 'https://localhost:44392/api/movie',
-    dataType: 'json',
-    type: 'post',
-    contentType: 'application/json',
-    success: function(result) {
-
       var htmlValue = "";
       $('#view-table-body').html(htmlValue);
       htmlValue += '<form id="new-movie"> ' +
-	     '	<input id="new-movie-title" type="text" name="Title" placeholder="Title" /><br /> ' +
-	      '	<input id="new-movie-director" type="text" name="Director" placeholder="Director" /><br /> ' +
-	       '<input id="new-movie-genre" type="text" name="Genre" placeholder="Genre" />' +
-		'<button type ="submit">Submit</button>'+
+	     '	<input id="addMovie-title" type="text" name="Title" placeholder="Title" /><br /> ' +
+	      '	<input id="addMovie-director" type="text" name="Director" placeholder="Director" /><br /> ' +
+	       '<input id="addMovie-genre" type="text" name="Genre" placeholder="Genre" />' +
+		'<button type ="submit" id = "addMovie-button">Submit</button>'+
 	'</form>'
     $('#view-table-body').html(htmlValue);
-    $('#new-movie').submit(addMovie);
+    var thisButton = document.getElementById("addMovie-button");
+    thisButton.addEventListener("click", addMovie);
 }
-})
+
 
 function getMovie(MovieId) {
   $.ajax({
