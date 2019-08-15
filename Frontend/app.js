@@ -46,6 +46,54 @@ function getMovies() {
     }
   });
 }
+function findMovies()
+{
+	var dict = {
+		searchType: document.getElementById("findMovies-type").value,
+		userText: document.getElementById("findMovies-value").value
+	};
+
+	$.ajax({
+		url: 'https://localhost:44392/api/movie?searchType=' + dict.searchType + '&searchText=' + dict.userText,
+		dataType: 'json',
+		type: 'get',
+		contentType: 'application.json',
+		success: function(result) {
+			var htmlValue = "";
+      $('#view-table-body').html(htmlValue);
+			htmlValue += '<tr>\n<th>Title</th>\n<th>Genre</th>\n<th>Director</th>\n<th>Details</th>\n</tr>';
+			$.each(result, function(key, value) {
+				htmlValue += '<tr><td>' + value.Title + '</td><td>' + value.Director + '</td><td>' + value.Genre + '</td>';
+        htmlValue += '<td><button type="submit" id="get-this-movie" onclick="getMovie(' + value.MovieId + ')">Details</button></td></tr>\n';
+			})
+			htmlValue += '<tr><td colspan="4"><button type ="submit" onclick = "addMovieForm()">Add Movie</button></td></tr>';
+
+			$('#view-table-body').html(htmlValue);
+		},
+		error: function(jqXhr, textStatus, errorThrown)
+		{
+			console.log(errorThrown);
+		}
+	});
+}
+
+function findMoviesForm()
+{
+	var htmlValue = "";
+	$('#view-table-body').html(htmlValue);
+	htmlValue += '<form id="findMovies">\n';
+	htmlValue += '<select name="searchType" id="findMovies-type">\n';
+	htmlValue += '<option value="Title">Title</option>\n';
+	htmlValue += '<option value="Director">Director</option>\n';
+	htmlValue += '<option value="Genre">Genre</option>\n';
+	htmlValue += '</select>\n';
+	htmlValue += '<input id="findMovies-value" type="text" name="userText" placeholder="Enter serach term here." />\n';
+	htmlValue += '<button type="submit" id="findMovies-button">Search</button>\n';
+	htmlValue += '</form>';
+	$('#view-table-body').html(htmlValue);
+	var thisButton = document.getElementById("findMovies-button");
+  thisButton.addEventListener("click", findMovies);
+}
 
 function addMovieForm() {
 
