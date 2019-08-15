@@ -64,9 +64,9 @@ function findMovies()
 			htmlValue += '<tr>\n<th>Title</th>\n<th>Genre</th>\n<th>Director</th>\n<th>Details</th>\n</tr>';
 			$.each(result, function(key, value) {
 				htmlValue += '<tr><td>' + value.Title + '</td><td>' + value.Director + '</td><td>' + value.Genre + '</td>';
-        htmlValue += '<td><button type="submit" id="get-this-movie" onclick="getMovie(' + value.MovieId + ')">Details</button></td></tr>\n';
+        htmlValue += '<td><button type="submit" class="btn btn-outline-dark" id="get-this-movie" onclick="getMovie(' + value.MovieId + ')">Details</button></td></tr>\n';
 			})
-			htmlValue += '<tr><td colspan="4"><button type ="submit" onclick = "addMovieForm()">Add Movie</button></td></tr>';
+			htmlValue += '<tr><td colspan="4"><button type ="submit" class="btn btn-outline-dark" onclick = "addMovieForm()">Add Movie</button></td></tr>';
 
 			$('#view-table-body').html(htmlValue);
 		},
@@ -87,8 +87,8 @@ function findMoviesForm()
 	htmlValue += '<option value="Director">Director</option>\n';
 	htmlValue += '<option value="Genre">Genre</option>\n';
 	htmlValue += '</select>\n';
-	htmlValue += '<input id="findMovies-value" type="text" name="userText" placeholder="Enter serach term here." />\n';
-	htmlValue += '<button type="submit" id="findMovies-button">Search</button>\n';
+	htmlValue += '<input id="findMovies-value" type="text" name="userText" placeholder="Enter search term here." />\n';
+	htmlValue += '<button class="btn btn-outline-dark" type="submit" id="findMovies-button">Search</button>\n';
 	htmlValue += '</form>';
 	$('#view-table-body').html(htmlValue);
 	var thisButton = document.getElementById("findMovies-button");
@@ -103,7 +103,7 @@ function addMovieForm() {
     '	<input id="addMovie-title" type="text" name="Title" placeholder="Title" /><br /> ' +
     '	<input id="addMovie-director" type="text" name="Director" placeholder="Director" /><br /> ' +
     '<input id="addMovie-genre" type="text" name="Genre" placeholder="Genre" />' +
-    '<button type ="submit" id = "addMovie-button">Submit</button>' +
+    '<button class="btn btn-outline-dark" type ="submit" id = "addMovie-button">Submit</button>' +
     '</form>'
   $('#view-table-body').html(htmlValue);
   var thisButton = document.getElementById("addMovie-button");
@@ -121,7 +121,7 @@ function getMovie(MovieId) {
       $('#view-table-body').html(htmlValue);
 			htmlValue += '<tr>\n<th>Title</th>\n<th>Genre</th>\n<th>Director</th>\n</tr>';
       htmlValue += '<tr><td>' + result.Title + '</td><td>' + result.Director + '</td><td>' + result.Genre + '</td></tr>';
-      htmlValue += '<tr><td colspan="3"><button type="submit" onclick="updateMovieForm(' + result.MovieId + ')">Update</button></td></tr>';
+      htmlValue += '<tr><td colspan="3"><button class="btn btn-outline-dark" type="submit" onclick="updateMovieForm(' + result.MovieId + ')">Update</button></td></tr>';
 
       $('#view-table-body').html(htmlValue);
     },
@@ -173,7 +173,7 @@ function updateMovieForm(MovieId) {
       htmlValue += '<input id="updateMovie-director" type="text" name="Director" placeholder="Director" value=\"' + result.Director + '\"/><br />\n';
       htmlValue += '<input id="updateMovie-genre" type="text" name="Genre" placeholder="Genre" value=\"' + result.Genre + '\"/><br />\n';
       htmlValue += '<input id="updateMovie-id" type="text" name="MovieId" placeholder="MovieId" value=\"' + result.MovieId + '\" hidden /><br />\n';
-      htmlValue += '<button type="submit" id="updateMovie-button">Update</button>\n';
+      htmlValue += '<button class="btn btn-outline-dark" type="submit" id="updateMovie-button">Update</button>\n';
       htmlValue += '</form>';
       $('#view-table-body').html(htmlValue);
 

@@ -46,19 +46,21 @@ namespace MovieLibrary.Controllers
 
         public IHttpActionResult Get(string searchType, string searchText)
         {
-            if (searchType == "Title")
+            searchText = searchText.ToLower();
+            searchType = searchType.ToLower();
+            if (searchType == "title")
             {
                 var results = context.Movies.Where(m => m.Title.Contains(searchText)).ToList();
 
                 return Ok(results);
             }
-            else if (searchType == "Director")
+            else if (searchType == "director")
             {
                 var results = context.Movies.Where(m => m.Director.Contains(searchText)).ToList();
 
                 return Ok(results);
             }
-            else if (searchType == "Genre")
+            else if (searchType == "genre")
             {
                 var results = context.Movies.Where(m => m.Genre.Contains(searchText)).ToList();
 

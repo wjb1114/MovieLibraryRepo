@@ -1,6 +1,6 @@
 body {
 	background-color: #15F9E2;
-		font-family: "Comic Sans MS", sans-serif; 
+		font-family: "Comic Sans MS", sans-serif;
 }
 
 table, form {
@@ -15,7 +15,7 @@ input {
 	width: 100% !important;
 }
 
-button#get-all-movies {
+button#get-all-movies, button#search-movies {
 	margin: auto;
 	width: 50% !important;
 }
