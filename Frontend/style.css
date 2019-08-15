@@ -1,5 +1,6 @@
 body {
 	background-color: #15F9E2;
+
 }
 
 
@@ -18,4 +19,11 @@ input {
 button#get-all-movies {
 	margin: auto;
 	width: 50% !important;
+}
+
+#container-div {
+	height: 100vh;
+	border-radius:
+	background-color: #A6C6C2;
+	margin: auto;
 }

@@ -8,12 +8,21 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
+
+
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1 class"display-4">Movie Library</h1>
+		<p class="lead">Feel free to add or update any movies to the library.</p>
+	</div>
+</div>
 
 	<div id="response">
 		<pre></pre>
 	</div>
-
+<div id = "container-div" class = "container">
 	<!-- <form id="new-movie">
 		<input id="new-movie-title" type="text" name="Title" placeholder="Title" /><br />
 		<input id="new-movie-director" type="text" name="Director" placeholder="Director" /><br />
@@ -23,7 +32,7 @@
 	</form> -->
 
 <div class= "text-center">
-	<button type ="submit" onclick = "addMovieForm()">Add Movie</button>
+	<button type ="submit" class="btn btn-outline-light" onclick = "addMovieForm()">Add Movie</button>
 </div>
 
 	<!-- <table id="view-table-head">
@@ -36,7 +45,7 @@
 	<div class="text-center">
 		<button type="submit" id="get-all-movies" class="btn btn-outline-light" onclick= "getMovies()">Get Movie List</button>
 	</div>
-
+</div>
 
 <!-- <form id="updateMovie">
 	<input id="updateMovie-title" type="text" name="Title" placeholder="Title" /><br />
