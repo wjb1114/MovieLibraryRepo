@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Linq.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -42,6 +43,42 @@ namespace MovieLibrary.Controllers
             }
 
             
+        }
+
+        public IHttpActionResult Get(string searchType, string searchText)
+        {
+            var movies = context.Movies.ToList();
+            if (searchType == "Title")
+            {
+                var results =
+                    from m in context.Movies
+                    where SqlMethods.Like(m.Title, "%" + searchText + "%")
+                    select m;
+
+                return Ok(results);
+            }
+            else if (searchType == "Director")
+            {
+                var results =
+                    from m in context.Movies
+                    where SqlMethods.Like(m.Director, "%" + searchText + "%")
+                    select m;
+
+                return Ok(results);
+            }
+            else if (searchType == "Genre")
+            {
+                var results =
+                    from m in context.Movies
+                    where SqlMethods.Like(m.Genre, "%" + searchText + "%")
+                    select m;
+
+                return Ok(results);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // POST api/movie
