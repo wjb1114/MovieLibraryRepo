@@ -1,9 +1,16 @@
+body {
+	background-color: #15F9E2;
+}
+
+
+
+
 table, form {
 	margin: auto;
 	width: 50% !important;
 }
 
-button, input {
+input {
 	margin: auto;
 	width: 100% !important;
 }
