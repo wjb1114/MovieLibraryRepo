@@ -1,5 +1,4 @@
-(function($){
-    function processForm( e ){
+    function addMovie( e ){
         var dict = {
         	Title : this["Title"].value,
         	Director: this["Director"].value,
@@ -24,8 +23,8 @@
         e.preventDefault();
     }
 
-    $('#new-movie').submit( processForm );
-})(jQuery);
+//  $('#new-movie').submit(addMovie);
+
 
 function getMovies() {
   $.ajax({
@@ -48,6 +47,28 @@ function getMovies() {
     }
   });
 }
+
+function addMovieForm() {
+
+  $.ajax({
+    url: 'https://localhost:44392/api/movie',
+    dataType: 'json',
+    type: 'post',
+    contentType: 'application/json',
+    success: function(result) {
+
+      var htmlValue = "";
+      $('#view-table-body').html(htmlValue);
+      htmlValue += '<form id="new-movie"> ' +
+	     '	<input id="new-movie-title" type="text" name="Title" placeholder="Title" /><br /> ' +
+	      '	<input id="new-movie-director" type="text" name="Director" placeholder="Director" /><br /> ' +
+	       '<input id="new-movie-genre" type="text" name="Genre" placeholder="Genre" />' +
+		'<button type ="submit">Submit</button>'+
+	'</form>'
+    $('#view-table-body').html(htmlValue);
+    $('#new-movie').submit(addMovie);
+}
+})
 
 function getMovie(MovieId) {
   $.ajax({
@@ -130,3 +151,4 @@ function getMovie(MovieId) {
 
     $('#updateMovie').submit( updateMovie );
 })(jQuery);
+}
