@@ -70,7 +70,7 @@ function getMovie(MovieId) {
     success: function(result) {
       var htmlValue = "";
       $('#view-table-body').html(htmlValue);
-
+			htmlValue += '<tr>\n<th>Title</th>\n<th>Genre</th>\n<th>Director</th>\n</tr>';
       htmlValue += '<tr><td>' + result.Title + '</td><td>' + result.Director + '</td><td>' + result.Genre + '</td></tr>';
       htmlValue += '<tr><td><button type="submit" onclick="updateMovieForm(' + result.MovieId + ')">Update</button></td></tr>';
 
