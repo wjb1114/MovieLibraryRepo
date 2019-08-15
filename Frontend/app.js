@@ -35,9 +35,9 @@ function getMovies() {
 			htmlValue += '<tr>\n<th>Title</th>\n<th>Genre</th>\n<th>Director</th>\n<th>Details</th>\n</tr>';
       $.each(result, function(key, value) {
         htmlValue += '<tr><td>' + value.Title + '</td><td>' + value.Director + '</td><td>' + value.Genre + '</td>';
-        htmlValue += '<td><button type="submit" id="get-this-movie" onclick="getMovie(' + value.MovieId + ')">Details</button></td></tr>\n';
+        htmlValue += '<td><button type="submit" class="btn btn-outline-dark" id="get-this-movie" onclick="getMovie(' + value.MovieId + ')">Details</button></td></tr>\n';
       })
-			htmlValue += '<tr><td colspan="4"><button type ="submit" onclick = "addMovieForm()">Add Movie</button></td></tr>';
+			htmlValue += '<tr><td colspan="4"><button type ="submit" class="btn btn-outline-dark" onclick = "addMovieForm()">Add Movie</button></td></tr>';
 
       $('#view-table-body').html(htmlValue);
     },
