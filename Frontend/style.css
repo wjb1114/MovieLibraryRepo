@@ -1,46 +1,45 @@
 body {
-	background-color: #15F9E2;
-		font-family: "Comic Sans MS", sans-serif;
+  background-color: #15F9E2;
+  font-family: "Comic Sans MS", sans-serif;
 }
 
 table, form {
-	margin: auto;
-	width: 75% !important;
-	background-color: #E9F0EF;
-
+  margin: auto;
+  width: 75% !important;
+  background-color: #E9F0EF;
 }
 
 input {
-	margin: auto;
-	width: 100% !important;
+  margin: auto;
+  width: 100% !important;
 }
 
 button#get-all-movies, button#search-movies {
-	margin: auto;
-	width: 50% !important;
+  margin: auto;
+  width: 50% !important;
 }
 
 button#addMovie {
-	margin: auto;
-	width: 50% !important;
+  margin: auto;
+  width: 50% !important;
 }
 
 #container-div {
-	min-height: 80vh;
-	padding: 30px;
-	height: auto;
-	border-color: #FF6347;
-	border-radius:25px;
-	background-color: #A6C6C2;
-	margin: auto;
+  min-height: 80vh;
+  padding: 30px;
+  height: auto;
+  border-color: #FF6347;
+  border-radius: 25px;
+  background-color: #A6C6C2;
+  margin: auto;
 }
 
 .jumbotron {
-	height: 20vh;
+  height: 20vh;
 }
 
 img {
-height:auto;
-border-radius: 50px;
-margin: 0px;
+  height: auto;
+  border-radius: 50px;
+  margin: 0px;
 }
