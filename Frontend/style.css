@@ -1,6 +1,21 @@
 body {
-  background-color: #15F9E2;
   font-family: "Comic Sans MS", sans-serif;
+}
+
+
+@keyframes pulse {
+  0% {
+    background-color: #001F3F;
+  }
+  50% {
+    background-color: #FF4136;
+  }
+  100% {
+    background-color:#001F3F;
+  }
+}
+.element {
+  animation: pulse 5s infinite;
 }
 
 table, form {
@@ -30,7 +45,7 @@ button#addMovie {
   height: auto;
   border-color: #FF6347;
   border-radius: 25px;
-  background-color: #A6C6C2;
+  background-color: #DECBCB;
   margin: auto;
 }
 
