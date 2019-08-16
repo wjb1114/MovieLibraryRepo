@@ -17,30 +17,40 @@ namespace MovieLibrary.Controllers
         {
             context = new ApplicationDbContext();
         }
-        // GET api/movie
+      
         public IHttpActionResult Get()
         {
-          
-
             using (ApplicationDbContext context = new ApplicationDbContext())
             {
+                try
+                {
+                    var movies = context.Movies.ToList();
 
-                var movies = context.Movies.ToList();
+                    return Ok(movies);
+                }
+                catch
+                {
+                    return BadRequest();
+                }
 
-                return Ok(movies);
             }
         }
 
-        // GET api/movie/5
         public IHttpActionResult Get(int MovieId)
         {
             using (ApplicationDbContext context = new ApplicationDbContext())
             {
-                var movies = context.Movies.Where(m => m.MovieId == MovieId).FirstOrDefault();
+                try
+                {
+                    var movies = context.Movies.Where(m => m.MovieId == MovieId).FirstOrDefault();
 
-                return Ok(movies);
+                    return Ok(movies);
+                }
+                catch
+                {
+                    return BadRequest();
+                }
             }
-
             
         }
 
@@ -72,7 +82,6 @@ namespace MovieLibrary.Controllers
             }
         }
 
-        // POST api/movie
         [HttpPost]
         public IHttpActionResult Post([FromBody]Movie value)
         {
@@ -95,25 +104,30 @@ namespace MovieLibrary.Controllers
             }
         }
 
-        // PUT api/movie/5
         [HttpPut]
 
-        public void Put(int id, [FromBody]Movie movie)
+        public IHttpActionResult Put(int id, [FromBody]Movie movie)
         {
 
             using (ApplicationDbContext context = new ApplicationDbContext())
             {
-                var movies = context.Movies.FirstOrDefault(m => m.MovieId == id);
+                try
+                {
+                    var movies = context.Movies.FirstOrDefault(m => m.MovieId == id);
 
-                movies.Title = movie.Title;
-                movies.Genre = movie.Genre;
-                movies.Director = movie.Director;
-                context.SaveChanges();
-            }
-            // Update movie in db logic
+                    movies.Title = movie.Title;
+                    movies.Genre = movie.Genre;
+                    movies.Director = movie.Director;
+                    context.SaveChanges();
+                    return Ok();
+                }
+                catch
+                {
+                    return BadRequest();
+                }
+            }  
         }
 
-        // DELETE api/movie/5
         public IHttpActionResult Delete(int id)
         {
             try
