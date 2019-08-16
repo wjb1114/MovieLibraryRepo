@@ -19,8 +19,6 @@ namespace MovieLibrary.Controllers
         }
         public IHttpActionResult Get()
         {
-          
-
             using (ApplicationDbContext context = new ApplicationDbContext())
             {
                 try
@@ -51,7 +49,6 @@ namespace MovieLibrary.Controllers
                     return BadRequest();
                 }
             }
-
             
         }
 
@@ -133,7 +130,7 @@ namespace MovieLibrary.Controllers
                 {
                     return BadRequest();
                 }
-            }
+            }  
         }
 
         public IHttpActionResult Delete(int id)
